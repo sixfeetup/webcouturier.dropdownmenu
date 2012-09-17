@@ -124,14 +124,14 @@ class DropdownMenuViewlet(common.GlobalSectionsViewlet):
         self.data = Assignment(root=self.navroot_path)
 
     def getTabObject(self, tabUrl='', tabPath=None):
-        if tabUrl == self.portal_state.navigation_root_url():
+        if tabUrl == self.navigation_root_url:
             # We are at the navigation root
             return ''
         if tabPath is None:
             # get path for current tab's object
             try:
                 # we are in Plone > 3.0.x
-                tabPath = tabUrl.split(self.site_url)[-1]
+                tabPath = tabUrl.split(self.navigation_root_url)[-1]
             except AttributeError:
                 # we are in Plone 3.0.x world
                 tabPath = tabUrl.split(self.portal_url)[-1]
